@@ -5,19 +5,25 @@ using TMPro;
 
 public class Quiz : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI questionText;
-    [SerializeField] QuestionSO question;
-    [SerializeField] GameObject[] answersButton;
+  [SerializeField] TextMeshProUGUI questionText;
+  [SerializeField] QuestionSO question;
+  [SerializeField] GameObject[] answersButton;
 
 
-    void Start()
+  void Start()
+  {
+    questionText.text = question.GetQuestion();
+
+    for (int i = 0; i < answersButton.Length; ++i)
     {
-        questionText.text = question.GetQuestion();
+      TextMeshProUGUI buttonText = answersButton[i].GetComponentInChildren<TextMeshProUGUI>();
+      buttonText.text = question.GetAnswer(i);
     }
+  }
 
-    
-    void Update()
-    {
-        
-    }
+
+  void Update()
+  {
+
+  }
 }
