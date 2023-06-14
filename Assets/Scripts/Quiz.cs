@@ -7,6 +7,7 @@ public class Quiz : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] QuestionSO question;
+    [SerializeField] GameObject[] answersButton;
 
 
     void Start()
