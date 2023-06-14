@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionSO : MonoBehaviour
+[CreateAssetMenu(menuName = "Quiz Question", fileName = "New Question")]
+public class QuestionSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [TextArea(2,6)]
+    [SerializeField] string question = "Enter new question text here";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
