@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53dadf933fc6f947bf9293056dae68d, type: 3}
   m_Name: Question 1
   m_EditorClassIdentifier: 
-  question: who was Qui-Gon Jinn Master?
+  question: Who was Qui-Gon Jinn Master?
   answers:
   - Master Yoda
   - Master Dooku
   - Master Ki-Adi-Mundi
   - Master Yaddle
+  correctAnswerIndex: 1

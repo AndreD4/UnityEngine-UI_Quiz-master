@@ -11,7 +11,7 @@ public class Quiz : MonoBehaviour
 
     void Start()
     {
-        
+        questionText.text = question.GetQuestion();
     }
 
     
