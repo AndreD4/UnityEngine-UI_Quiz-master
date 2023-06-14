@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: Question 1
   m_EditorClassIdentifier: 
   question: who was Qui-Gon Jinn Master?
+  answers:
+  - Master Yoda
+  - Master Dooku
+  - Master Ki-Adi-Mundi
+  - Master Yaddle
