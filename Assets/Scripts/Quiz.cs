@@ -16,20 +16,15 @@ public class Quiz : MonoBehaviour
 
   void Start()
   {
-    questionText.text = question.GetQuestion();
-
-    for (int i = 0; i < answersButton.Length; ++i)
-    {
-      TextMeshProUGUI buttonText = answersButton[i].GetComponentInChildren<TextMeshProUGUI>();
-      buttonText.text = question.GetAnswer(i);
-    }
+    DisplayQuestion();
   }
+
 
   public void OnAnswerSelected(int index)
   {
     Image buttonImage;
 
-    if(index == question.GetCorrectAnsweIndex())
+    if (index == question.GetCorrectAnsweIndex())
     {
       questionText.text = "correct";
       buttonImage = answersButton[index].GetComponent<Image>();
@@ -45,6 +40,17 @@ public class Quiz : MonoBehaviour
     }
   }
 
+
+  void DisplayQuestion()
+  {
+    questionText.text = question.GetQuestion();
+
+    for (int i = 0; i < answersButton.Length; ++i)
+    {
+      TextMeshProUGUI buttonText = answersButton[i].GetComponentInChildren<TextMeshProUGUI>();
+      buttonText.text = question.GetAnswer(i);
+    }
+  }
 
   void Update()
   {
