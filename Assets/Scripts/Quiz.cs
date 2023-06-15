@@ -10,13 +10,13 @@ public class Quiz : MonoBehaviour
   [Header("Questions")]
   [SerializeField] TextMeshProUGUI questionText;
   [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
-   QuestionSO currentQuestion;
+  QuestionSO currentQuestion;
 
   [Header("Answers")]
   [SerializeField] GameObject[] answersButton;
   int correctAnswerIndex;
-  bool hasAnswerEarly;
-  
+  bool hasAnswerEarly = true;
+
   [Header("Sprites")]
   [SerializeField] Sprite defaultAnswerSprite;
   [SerializeField] Sprite correctAnswerSprite;
@@ -35,7 +35,7 @@ public class Quiz : MonoBehaviour
   public bool isComplete;
 
 
-  void Start()
+  void Awake()
   {
     timer = FindObjectOfType<Timer>();
     scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -46,13 +46,18 @@ public class Quiz : MonoBehaviour
   void Update()
   {
     timerImage.fillAmount = timer.fillFraction;
-    if(timer.loadNextQuestion)
+    if (timer.loadNextQuestion)
     {
+      if (progressBar.value == progressBar.maxValue)
+      {
+        isComplete = true;
+        return;
+      }
       hasAnswerEarly = false;
       GetNextQuestion();
       timer.loadNextQuestion = false;
     }
-    else if(!hasAnswerEarly && !timer.isAnsweringQuestion)
+    else if (!hasAnswerEarly && !timer.isAnsweringQuestion)
     {
       DisplayAnswer(-1);
       SetButtonState(false);
@@ -68,10 +73,7 @@ public class Quiz : MonoBehaviour
     timer.CancelTimer();
     scoreText.text = "Score:" + scoreKeeper.CalculateScore() + "%";
 
-    if(progressBar.value == progressBar.maxValue)
-    {
-      isComplete = true;
-    }
+
   }
 
   void DisplayAnswer(int index)
@@ -97,14 +99,14 @@ public class Quiz : MonoBehaviour
 
   void GetNextQuestion()
   {
-    if(questions.Count > 0)
+    if (questions.Count > 0)
     {
-    SetButtonState(true);
-    SetDefaultButtonSprite();
-    GetRandomQuestion();
-    DisplayQuestion();
-    progressBar.value++;
-    scoreKeeper.IncrementQuestionSeen();
+      SetButtonState(true);
+      SetDefaultButtonSprite();
+      GetRandomQuestion();
+      DisplayQuestion();
+      progressBar.value++;
+      scoreKeeper.IncrementQuestionSeen();
     }
   }
 
@@ -113,9 +115,9 @@ public class Quiz : MonoBehaviour
     int index = Random.Range(0, questions.Count);
     currentQuestion = questions[index];
 
-    if(questions.Contains(currentQuestion))
+    if (questions.Contains(currentQuestion))
     {
-    questions.Remove(currentQuestion);
+      questions.Remove(currentQuestion);
     }
   }
 
@@ -133,7 +135,7 @@ public class Quiz : MonoBehaviour
 
   void SetButtonState(bool state)
   {
-    for(int i = 0; i < answersButton.Length; i++)
+    for (int i = 0; i < answersButton.Length; i++)
     {
       Button button = answersButton[i].GetComponent<Button>();
       button.interactable = state;
@@ -142,7 +144,7 @@ public class Quiz : MonoBehaviour
 
   void SetDefaultButtonSprite()
   {
-    for(int i = 0; i < answersButton.Length; i++)
+    for (int i = 0; i < answersButton.Length; i++)
     {
       Image buttonImage = answersButton[i].GetComponent<Image>();
       buttonImage.sprite = defaultAnswerSprite;
