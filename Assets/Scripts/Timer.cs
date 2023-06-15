@@ -7,49 +7,50 @@ public class Timer : MonoBehaviour
   [SerializeField] float timeToCompleteQuestion = 30f;
   [SerializeField] float timeToShowCorrectAnswer = 10f;
 
-  public bool loadNextQuestion = true;
-  public bool isAnsweringQuestion = false;
+  public bool loadNextQuestion;
   public float fillFraction;
+  public bool isAnsweringQuestion;
+  
   float timerValue;
-    void Update()
-    {
-        UpdateTimer();
-    }
+  void Update()
+  {
+    UpdateTimer();
+  }
 
-    public void CancelTimer()
-    {
-      timerValue = 0;
-    }
+  public void CancelTimer()
+  {
+    timerValue = 0;
+  }
 
-    void UpdateTimer()
-    {
-      timerValue -= Time.deltaTime;
+  void UpdateTimer()
+  {
+    timerValue -= Time.deltaTime;
 
-      if(isAnsweringQuestion)
+    if (isAnsweringQuestion)
+    {
+      if (timerValue > 0)
       {
-        if(timerValue > 0)
-        {
-          fillFraction = timerValue / timeToCompleteQuestion;// 10/10=1
-        }
-        else
-        {
-          isAnsweringQuestion = false;
-          timerValue = timeToShowCorrectAnswer;
-        }
+        fillFraction = timerValue / timeToCompleteQuestion;// 10/10=1
       }
       else
       {
-        if (timerValue > 0)
-        {
-          fillFraction = timerValue / timeToShowCorrectAnswer;
-        }
-        else
-        {
-          isAnsweringQuestion = true;
-          timerValue = timeToCompleteQuestion;
-          loadNextQuestion = true;
-        }
+        isAnsweringQuestion = false;
+        timerValue = timeToShowCorrectAnswer;
       }
-      Debug.Log(isAnsweringQuestion + ": " + timerValue + " = " + fillFraction);
     }
+    else
+    {
+      if (timerValue > 0)
+      {
+        fillFraction = timerValue / timeToShowCorrectAnswer;
+      }
+      else
+      {
+        isAnsweringQuestion = true;
+        timerValue = timeToCompleteQuestion;
+        loadNextQuestion = true;
+      }
+    }
+
+  }
 }
