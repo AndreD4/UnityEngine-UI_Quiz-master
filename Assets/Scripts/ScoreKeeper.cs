@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  int correctAnswers = 0;
+  int questionSeen = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  public int GetCorrectAnswers()
+  {
+    return correctAnswers;
+  }
+
+  public void IncrementCorrectAnswers()
+  {
+    correctAnswers++;
+  }
+
+  public int GetQuestionSeen()
+  {
+    return questionSeen;
+  }
+
+  public void IncrementQuestionSeen()
+  {
+    questionSeen++;
+  }
+
+  public int CalculateScore()
+  {
+    return Mathf.RoundToInt(correctAnswers / (float)questionSeen * 100);
+  }
+
 }
