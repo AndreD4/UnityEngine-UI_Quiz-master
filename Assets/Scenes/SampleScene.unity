@@ -592,6 +592,7 @@ MonoBehaviour:
   - {fileID: 679104382}
   defaultAnswerSprite: {fileID: 21300000, guid: 2c61f38550395ea44bf675c131a3dd7f, type: 3}
   correctAnswerSprite: {fileID: 21300000, guid: 523f358db5b9f2e49aa9b037f1815037, type: 3}
+  timerImage: {fileID: 1858192789}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
