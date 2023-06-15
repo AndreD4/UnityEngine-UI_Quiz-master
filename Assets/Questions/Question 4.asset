@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 4
   m_EditorClassIdentifier: 
   question: Who created the rule of two?
+  answers:
+  - Exar Kun
+  - Revan
+  - Bane
+  - Jar Jar Binks
+  correctAnswerIndex: 2

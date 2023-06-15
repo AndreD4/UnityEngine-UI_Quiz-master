@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 2
   m_EditorClassIdentifier: 
   question: what race did Anikin Skywalker hate the most?
+  answers:
+  - Tuskin Raiders
+  - Twi'lek
+  - Hutt
+  - Gungans
+  correctAnswerIndex: 0

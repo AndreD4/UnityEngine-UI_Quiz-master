@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 5
   m_EditorClassIdentifier: 
   question: The sith code begins saying?
+  answers:
+  - There is only the strong and the weak
+  - With great power comes great magic
+  - The rule of two shall be law
+  - Peace is a lie, there is only passion
+  correctAnswerIndex: 3
