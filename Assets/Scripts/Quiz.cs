@@ -16,6 +16,7 @@ public class Quiz : MonoBehaviour
 
   void Start()
   {
+     //GetNextQuestion();
     DisplayQuestion();
   }
 
@@ -72,6 +73,10 @@ public class Quiz : MonoBehaviour
 
   void SetDefaultButtonSprite()
   {
-    
+    for(int i = 0; i < answersButton.Length; i++)
+    {
+      Image buttonImage = answersButton[i].GetComponent<Image>();
+      buttonImage.sprite = defaultAnswerSprite;
+    }
   }
 }
